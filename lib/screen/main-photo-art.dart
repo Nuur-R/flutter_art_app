@@ -1,78 +1,54 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
+import 'package:flutter_art_app/models/hand-art-model.dart';
 
 class MainPhotoArt extends StatelessWidget {
+  final _scrollController = FixedExtentScrollController();
+  // int? da = listKulinerNusantara.length;
+  static const double _itemHeight = 170;
+  static const int _itemCount = 7; // Tinjau Lagi buat deklarasi static const
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ListWheelScrollView(
-          itemExtent: 75,
-          children: items,
+    return SafeArea(
+      child: Scaffold(
+        body: ClickableListWheelScrollView(
+          scrollController: _scrollController,
+          itemHeight: _itemHeight,
+          itemCount: _itemCount,
+          onItemTapCallback: (index) {
+            print("onItemTapCallback index: $index");
+            print("x = $x");
+          },
+          child: ListWheelScrollView(
+            controller: _scrollController,
+            itemExtent: _itemHeight,
+            physics: FixedExtentScrollPhysics(),
+            overAndUnderCenterOpacity: 0.5,
+            diameterRatio: 1.5,
+            perspective: 0.002,
+            // offAxisFraction: -0.5,
+            children: ButtonList,
+          ),
         ),
       ),
     );
   }
 }
 
-List<Widget> items = [
-  ListTile(
-    leading: Icon(Icons.local_activity, size: 50),
-    title: Text('Activity'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_airport, size: 50),
-    title: Text('Airport'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_atm, size: 50),
-    title: Text('ATM'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_bar, size: 50),
-    title: Text('Bar'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_cafe, size: 50),
-    title: Text('Cafe'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_car_wash, size: 50),
-    title: Text('Car Wash'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_convenience_store, size: 50),
-    title: Text('Heart Shaker'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_dining, size: 50),
-    title: Text('Dining'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_drink, size: 50),
-    title: Text('Drink'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_florist, size: 50),
-    title: Text('Florist'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_gas_station, size: 50),
-    title: Text('Gas Station'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_grocery_store, size: 50),
-    title: Text('Grocery Store'),
-    subtitle: Text('Description here'),
-  ),
+class randomIntLoop {
+  // static int x = 0;
+  static int getRandomInt() {
+    x = Random().nextInt(handArtCollection.length);
+    return x;
+  }
+}
+
+var x = Random().nextInt(handArtCollection.length);
+var y = randomIntLoop.getRandomInt();
+
+List<Widget> ButtonList = [
+  for (var i = 0; i < 10; i++)
+    Image.asset(handArtCollection[randomIntLoop.getRandomInt()].imageTitles),
 ];
