@@ -1,78 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
+import 'package:flutter_art_app/models/hand-art-model.dart';
+import 'package:flutter_art_app/screen/detail.dart';
 
 class MainHandArt extends StatelessWidget {
+  final _scrollController = FixedExtentScrollController();
+  // int? da = listKulinerNusantara.length;
+  static const double _itemHeight = 170;
+  static const int _itemCount = 7; // Tinjau Lagi buat deklarasi static const
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ListWheelScrollView(
-          itemExtent: 75,
-          children: items,
+      body: Container(
+        color: Colors.black,
+        child: ClickableListWheelScrollView(
+          scrollController: _scrollController,
+          itemHeight: _itemHeight,
+          itemCount: _itemCount,
+          onItemTapCallback: (index) {
+            print("onItemTapCallback index: $index");
+          },
+          child: ListWheelScrollView(
+            controller: _scrollController,
+            itemExtent: _itemHeight,
+            physics: FixedExtentScrollPhysics(),
+            diameterRatio: 1.5,
+            perspective: 0.002,
+            offAxisFraction: -1.5,
+            children: ButtonList,
+          ),
         ),
       ),
     );
   }
 }
 
-List<Widget> items = [
-  ListTile(
-    leading: Icon(Icons.local_activity, size: 50),
-    title: Text('Activity'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_airport, size: 50),
-    title: Text('Airport'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_atm, size: 50),
-    title: Text('ATM'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_bar, size: 50),
-    title: Text('Bar'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_cafe, size: 50),
-    title: Text('Cafe'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_car_wash, size: 50),
-    title: Text('Car Wash'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_convenience_store, size: 50),
-    title: Text('Heart Shaker'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_dining, size: 50),
-    title: Text('Dining'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_drink, size: 50),
-    title: Text('Drink'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_florist, size: 50),
-    title: Text('Florist'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_gas_station, size: 50),
-    title: Text('Gas Station'),
-    subtitle: Text('Description here'),
-  ),
-  ListTile(
-    leading: Icon(Icons.local_grocery_store, size: 50),
-    title: Text('Grocery Store'),
-    subtitle: Text('Description here'),
-  ),
+List<Widget> ButtonList = [
+  for (var i = 0; i < handArtCollection.length; i++)
+    PhysicalModel(
+      color: Color.fromARGB(0, 170, 158, 52),
+      elevation: 30.0,
+      borderRadius: BorderRadius.circular(40.0),
+      shadowColor: Color.fromARGB(144, 170, 158, 52),
+      child: Image.asset(
+        handArtCollection[i].buttonImage,
+        width: 300,
+        height: 170,
+      ),
+    ),
 ];
