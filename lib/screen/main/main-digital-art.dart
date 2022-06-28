@@ -2,15 +2,15 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
-import 'package:flutter_art_app/models/hand-art-model.dart';
-import 'package:flutter_art_app/screen/detail.dart';
+import 'package:flutter_art_app/models/digital-art-model.dart';
+import 'package:flutter_art_app/screen/detail/detail-digital-art.dart';
 
-class MainHandArt extends StatelessWidget {
+class MainDigitalArt extends StatelessWidget {
   final _scrollController = FixedExtentScrollController();
   // int? da = listKulinerNusantara.length;
   static const double _itemHeight = 170;
-  static final int _itemCount =
-      handArtCollection.length * 3; // Tinjau Lagi buat deklarasi static const
+  static final int _itemCount = digitalArtCollection.length *
+      3; // Tinjau Lagi buat deklarasi static const
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +21,9 @@ class MainHandArt extends StatelessWidget {
           itemHeight: _itemHeight,
           itemCount: _itemCount,
           onItemTapCallback: (index) {
-            print("onItemTapCallback index: $index");
+            final DigitalArtData digitalArt = digitalArtCollection[index];
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return detailMobile();
+              return DetailMobile(digitalArt: digitalArt);
             }));
           },
           child: ListWheelScrollView(
@@ -32,7 +32,7 @@ class MainHandArt extends StatelessWidget {
             physics: FixedExtentScrollPhysics(),
             diameterRatio: 1.5,
             perspective: 0.002,
-            offAxisFraction: -1.5,
+            offAxisFraction: 1.5,
             children: buttonList,
           ),
         ),
@@ -41,23 +41,15 @@ class MainHandArt extends StatelessWidget {
   }
 }
 
-class RandomIntLoop {
-  static int x = 0;
-  static int getRandomInt() {
-    x = Random().nextInt(handArtCollection.length);
-    return x;
-  }
-}
-
 List<Widget> buttonList = [
-  for (var i = 0; i < handArtCollection.length * 3; i++)
+  for (var i = 0; i < digitalArtCollection.length; i++)
     PhysicalModel(
       color: const Color.fromARGB(0, 170, 158, 52),
       elevation: 30.0,
       borderRadius: BorderRadius.circular(40.0),
       shadowColor: const Color.fromARGB(144, 170, 158, 52),
       child: Image.asset(
-        handArtCollection[RandomIntLoop.getRandomInt()].buttonImage,
+        digitalArtCollection[i].buttonImage,
         width: 300,
         height: 170,
       ),

@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_art_app/models/hand-art-model.dart';
 import 'package:flutter_art_app/screen/main-screen.dart';
 
-class detailMobile extends StatelessWidget {
-  const detailMobile({Key? key}) : super(key: key);
+class DetailMobile extends StatelessWidget {
+  // const DetailMobile({Key? key}) : super(key: key);
+  final HandArtData handArt;
+  const DetailMobile({required this.handArt});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text('Hello World'),
+      body: Center(
+        child: Text(handArt.title),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pop(context);
         },
         tooltip: 'Kembali',
-        child: const Icon(Icons.arrow_back_outlined),
+        child: Icon(Icons.arrow_back_outlined),
       ),
     );
   }

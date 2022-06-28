@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_art_app/screen/main-hand-art.dart';
-import 'package:flutter_art_app/screen/main-photo-art.dart';
-import 'package:flutter_art_app/screen/main-digital-art.dart';
+import 'package:flutter_art_app/screen/main/main-hand-art.dart';
+import 'package:flutter_art_app/screen/main/main-photo-art.dart';
+import 'package:flutter_art_app/screen/main/main-digital-art.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
