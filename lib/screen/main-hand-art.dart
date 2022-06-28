@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter_art_app/models/hand-art-model.dart';
@@ -7,7 +9,8 @@ class MainHandArt extends StatelessWidget {
   final _scrollController = FixedExtentScrollController();
   // int? da = listKulinerNusantara.length;
   static const double _itemHeight = 170;
-  static const int _itemCount = 7; // Tinjau Lagi buat deklarasi static const
+  static final int _itemCount =
+      handArtCollection.length * 3; // Tinjau Lagi buat deklarasi static const
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +22,9 @@ class MainHandArt extends StatelessWidget {
           itemCount: _itemCount,
           onItemTapCallback: (index) {
             print("onItemTapCallback index: $index");
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return detailMobile();
+            }));
           },
           child: ListWheelScrollView(
             controller: _scrollController,
@@ -27,7 +33,7 @@ class MainHandArt extends StatelessWidget {
             diameterRatio: 1.5,
             perspective: 0.002,
             offAxisFraction: -1.5,
-            children: ButtonList,
+            children: buttonList,
           ),
         ),
       ),
@@ -35,15 +41,23 @@ class MainHandArt extends StatelessWidget {
   }
 }
 
-List<Widget> ButtonList = [
-  for (var i = 0; i < handArtCollection.length; i++)
+class RandomIntLoop {
+  static int x = 0;
+  static int getRandomInt() {
+    x = Random().nextInt(handArtCollection.length);
+    return x;
+  }
+}
+
+List<Widget> buttonList = [
+  for (var i = 0; i < handArtCollection.length * 3; i++)
     PhysicalModel(
-      color: Color.fromARGB(0, 170, 158, 52),
+      color: const Color.fromARGB(0, 170, 158, 52),
       elevation: 30.0,
       borderRadius: BorderRadius.circular(40.0),
-      shadowColor: Color.fromARGB(144, 170, 158, 52),
+      shadowColor: const Color.fromARGB(144, 170, 158, 52),
       child: Image.asset(
-        handArtCollection[i].buttonImage,
+        handArtCollection[RandomIntLoop.getRandomInt()].buttonImage,
         width: 300,
         height: 170,
       ),

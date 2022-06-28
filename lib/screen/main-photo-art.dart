@@ -2,34 +2,38 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
-import 'package:flutter_art_app/models/hand-art-model.dart';
+import 'package:flutter_art_app/models/photo-art-model.dart';
+import 'package:flutter_art_app/screen/detail.dart';
 
 class MainPhotoArt extends StatelessWidget {
   final _scrollController = FixedExtentScrollController();
   // int? da = listKulinerNusantara.length;
   static const double _itemHeight = 170;
-  static const int _itemCount = 7; // Tinjau Lagi buat deklarasi static const
+  static final int _itemCount =
+      photoArtCollection.length * 3; // Tinjau Lagi buat deklarasi static const
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: ClickableListWheelScrollView(
+    return Scaffold(
+      body: Container(
+        color: Colors.black,
+        child: ClickableListWheelScrollView(
           scrollController: _scrollController,
           itemHeight: _itemHeight,
           itemCount: _itemCount,
           onItemTapCallback: (index) {
             print("onItemTapCallback index: $index");
-            print("x = $x");
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return detailMobile();
+            }));
           },
           child: ListWheelScrollView(
             controller: _scrollController,
             itemExtent: _itemHeight,
             physics: FixedExtentScrollPhysics(),
-            overAndUnderCenterOpacity: 0.5,
             diameterRatio: 1.5,
             perspective: 0.002,
-            // offAxisFraction: -0.5,
-            children: ButtonList,
+            offAxisFraction: 0.0,
+            children: buttonList,
           ),
         ),
       ),
@@ -37,18 +41,25 @@ class MainPhotoArt extends StatelessWidget {
   }
 }
 
-class randomIntLoop {
-  // static int x = 0;
+class RandomIntLoop {
+  static int x = 0;
   static int getRandomInt() {
-    x = Random().nextInt(handArtCollection.length);
+    x = Random().nextInt(photoArtCollection.length);
     return x;
   }
 }
 
-var x = Random().nextInt(handArtCollection.length);
-var y = randomIntLoop.getRandomInt();
-
-List<Widget> ButtonList = [
-  for (var i = 0; i < 10; i++)
-    Image.asset(handArtCollection[randomIntLoop.getRandomInt()].imageTitles),
+List<Widget> buttonList = [
+  for (var i = 0; i < photoArtCollection.length * 3; i++)
+    PhysicalModel(
+      color: const Color.fromARGB(0, 170, 158, 52),
+      elevation: 30.0,
+      borderRadius: BorderRadius.circular(40.0),
+      shadowColor: const Color.fromARGB(144, 170, 158, 52),
+      child: Image.asset(
+        photoArtCollection[RandomIntLoop.getRandomInt()].buttonImage,
+        width: 300,
+        height: 170,
+      ),
+    ),
 ];

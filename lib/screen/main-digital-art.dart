@@ -1,59 +1,65 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
-import 'package:flutter_art_app/models/hand-art-model.dart';
-import 'package:infinite_carousel/infinite_carousel.dart';
+import 'package:flutter_art_app/models/digital-art-model.dart';
+import 'package:flutter_art_app/screen/detail.dart';
 
-class MainDigitalArt extends StatefulWidget {
-  static const double _itemHeight = 170;
-  static const int _itemCount = 7;
-  @override
-  State<MainDigitalArt> createState() => _MainDigitalArtState();
-}
-
-class _MainDigitalArtState extends State<MainDigitalArt> {
+class MainDigitalArt extends StatelessWidget {
   final _scrollController = FixedExtentScrollController();
-  late InfiniteScrollController controller;
-  int selectedIndex = 0;
-  // Tinjau Lagi buat deklarasi static const
+  // int? da = listKulinerNusantara.length;
+  static const double _itemHeight = 170;
+  static final int _itemCount = digitalArtCollection.length *
+      3; // Tinjau Lagi buat deklarasi static const
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          body: ClickableListWheelScrollView(
-        scrollController: _scrollController,
-        itemHeight: MainDigitalArt._itemHeight,
-        itemCount: MainDigitalArt._itemCount,
-        onItemTapCallback: (index) {
-          print("onItemTapCallback index: $index");
-        },
-        child: ListWheelScrollView(
-          controller: _scrollController,
-          itemExtent: MainDigitalArt._itemHeight,
-          physics: FixedExtentScrollPhysics(),
-          // overAndUnderCenterOpacity: 0.5,
-          diameterRatio: 2.5,
-          perspective: 0.002,
-          offAxisFraction: 0.5,
-          children: ButtonList,
+    return Scaffold(
+      body: Container(
+        color: Colors.black,
+        child: ClickableListWheelScrollView(
+          scrollController: _scrollController,
+          itemHeight: _itemHeight,
+          itemCount: _itemCount,
+          onItemTapCallback: (index) {
+            print("onItemTapCallback index: $index");
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return detailMobile();
+            }));
+          },
+          child: ListWheelScrollView(
+            controller: _scrollController,
+            itemExtent: _itemHeight,
+            physics: FixedExtentScrollPhysics(),
+            diameterRatio: 1.5,
+            perspective: 0.002,
+            offAxisFraction: 1.5,
+            children: buttonList,
+          ),
         ),
-      )),
+      ),
     );
   }
 }
 
-List<Widget> ButtonList = [
-  for (var i = 0; i < handArtCollection.length; i++)
-    Image.asset(handArtCollection[i].imageTitles),
-];
+class RandomIntLoop {
+  static int x = 0;
+  static int getRandomInt() {
+    x = Random().nextInt(digitalArtCollection.length);
+    return x;
+  }
+}
 
-// InfiniteCarousel.builder(
-//           itemCount: 10,
-//           itemExtent: 120,
-//           center: true,
-//           anchor: 0.0,
-//           velocityFactor: 0.2,
-//           onIndexChanged: (index) {},
-//           controller: controller,
-//           axisDirection: Axis.vertical,
-//           loop: true,
-//           itemBuilder: (context, itemIndex, realIndex) {
+List<Widget> buttonList = [
+  for (var i = 0; i < digitalArtCollection.length * 3; i++)
+    PhysicalModel(
+      color: const Color.fromARGB(0, 170, 158, 52),
+      elevation: 30.0,
+      borderRadius: BorderRadius.circular(40.0),
+      shadowColor: const Color.fromARGB(144, 170, 158, 52),
+      child: Image.asset(
+        digitalArtCollection[RandomIntLoop.getRandomInt()].buttonImage,
+        width: 300,
+        height: 170,
+      ),
+    ),
+];

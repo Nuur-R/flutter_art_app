@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_art_app/screen/main-screen.dart';
 
-class name extends StatelessWidget {
-  const name({Key? key}) : super(key: key);
+class detailMobile extends StatelessWidget {
+  const detailMobile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('name asdasdasd sadasd'),
+    return Scaffold(
+      body: const Center(
+        child: Text('Hello World'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        tooltip: 'Kembali',
+        child: const Icon(Icons.arrow_back_outlined),
+      ),
     );
   }
 }

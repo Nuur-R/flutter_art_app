@@ -66,6 +66,16 @@ flutter:
     - images/handArt/3/
     - images/handArt/4/
     - images/handArt/5/
+    - images/photoArt/1/
+    - images/photoArt/2/
+    - images/photoArt/3/
+    - images/photoArt/4/
+    - images/photoArt/5/
+    - images/digitalArt/1/
+    - images/digitalArt/2/
+    - images/digitalArt/3/
+    - images/digitalArt/4/
+    - images/digitalArt/5/
     - images/welcome/
 
   # An image asset can refer to one or more resolution-specific "variants", see
