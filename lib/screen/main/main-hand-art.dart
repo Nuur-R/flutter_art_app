@@ -32,6 +32,7 @@ class _MainHandArtState extends State<MainHandArt> {
             final HandArtData handArt = handArtCollection[index];
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return DetailMobile(handArt: handArt);
+              // return ListTileSelectExample();
             }));
             print("onItemTapCallback index: $index");
           },
