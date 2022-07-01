@@ -54,7 +54,6 @@ class _GridDetailState extends State<GridDetail> {
             crossAxisCount: widget.gridCount,
             mainAxisSpacing: 20,
             crossAxisSpacing: 20,
-            // childAspectRatio: 10.5,
             padding: const EdgeInsets.all(8.0),
             children: widget.digitalArt.imagePaths.map((String path) {
               return Image.asset(path);

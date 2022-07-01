@@ -10,28 +10,25 @@ class DetailMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            if (constraints.maxWidth <= 600) {
-              return GridDetail(
-                gridCount: 1,
-                photoArt: photoArt,
-              );
-            } else if (constraints.maxWidth <= 1200) {
-              return GridDetail(
-                gridCount: 2,
-                photoArt: photoArt,
-              );
-            } else {
-              return GridDetail(
-                gridCount: 3,
-                photoArt: photoArt,
-              );
-            }
-          },
-        ),
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth <= 600) {
+            return GridDetail(
+              gridCount: 1,
+              photoArt: photoArt,
+            );
+          } else if (constraints.maxWidth <= 1200) {
+            return GridDetail(
+              gridCount: 2,
+              photoArt: photoArt,
+            );
+          } else {
+            return GridDetail(
+              gridCount: 3,
+              photoArt: photoArt,
+            );
+          }
+        },
       ),
     );
   }
@@ -57,7 +54,6 @@ class _GridDetailState extends State<GridDetail> {
             crossAxisCount: widget.gridCount,
             mainAxisSpacing: 20,
             crossAxisSpacing: 20,
-            // childAspectRatio: 1,
             padding: const EdgeInsets.all(8.0),
             children: widget.photoArt.imagePaths.map((String path) {
               return Image.asset(path);
