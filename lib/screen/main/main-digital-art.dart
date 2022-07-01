@@ -7,10 +7,13 @@ import 'package:flutter_art_app/screen/detail/detail-digital-art.dart';
 
 class MainDigitalArt extends StatelessWidget {
   final _scrollController = FixedExtentScrollController();
+  // final double height;
+
   // int? da = listKulinerNusantara.length;
+  final int listSelector;
   static const double _itemHeight = 170;
-  static final int _itemCount = digitalArtCollection.length *
-      3; // Tinjau Lagi buat deklarasi static const
+  static final int _itemCount = digitalArtCollection.length * 3;
+  MainDigitalArt({required this.listSelector});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +36,7 @@ class MainDigitalArt extends StatelessWidget {
             diameterRatio: 1.5,
             perspective: 0.002,
             offAxisFraction: 1.5,
-            children: buttonList,
+            children: list[listSelector],
           ),
         ),
       ),
@@ -41,6 +44,7 @@ class MainDigitalArt extends StatelessWidget {
   }
 }
 
+List list = [buttonList, midButtonList, wideButtonList];
 List<Widget> buttonList = [
   for (var i = 0; i < digitalArtCollection.length; i++)
     PhysicalModel(
@@ -52,6 +56,34 @@ List<Widget> buttonList = [
         digitalArtCollection[i].buttonImage,
         width: 300,
         height: 170,
+      ),
+    ),
+];
+List<Widget> midButtonList = [
+  for (var i = 0; i < digitalArtCollection.length; i++)
+    PhysicalModel(
+      color: const Color.fromARGB(0, 170, 158, 52),
+      elevation: 30.0,
+      borderRadius: BorderRadius.circular(40.0),
+      shadowColor: const Color.fromARGB(144, 170, 158, 52),
+      child: Image.asset(
+        digitalArtCollection[i].buttonImage,
+        width: 400,
+        height: 250,
+      ),
+    ),
+];
+List<Widget> wideButtonList = [
+  for (var i = 0; i < digitalArtCollection.length; i++)
+    PhysicalModel(
+      color: const Color.fromARGB(0, 170, 158, 52),
+      elevation: 30.0,
+      borderRadius: BorderRadius.circular(40.0),
+      shadowColor: const Color.fromARGB(144, 170, 158, 52),
+      child: Image.asset(
+        digitalArtCollection[i].buttonImage,
+        width: 500,
+        height: 380,
       ),
     ),
 ];

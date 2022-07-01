@@ -10,29 +10,55 @@ class DetailMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth <= 600) {
+            return GridDetail(
+              gridCount: 1,
+              digitalArt: digitalArt,
+            );
+          } else if (constraints.maxWidth <= 1200) {
+            return GridDetail(
+              gridCount: 2,
+              digitalArt: digitalArt,
+            );
+          } else {
+            return GridDetail(
+              gridCount: 3,
+              digitalArt: digitalArt,
+            );
+          }
+        },
+      ),
+    );
+  }
+}
+
+class GridDetail extends StatefulWidget {
+  // const DetailMobile({Key? key}) : super(key: key);
+  final int gridCount;
+  final DigitalArtData digitalArt;
+  GridDetail({required this.digitalArt, required this.gridCount});
+
+  @override
+  State<GridDetail> createState() => _GridDetailState();
+}
+
+class _GridDetailState extends State<GridDetail> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       body: Container(
         color: Colors.black,
-        child: ListView.builder(
-            padding: const EdgeInsets.all(8),
-            itemCount: digitalArt.imagePaths.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Column(
-                children: [
-                  SizedBox(
-                    width: 350,
-                    height: 350,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: PhysicalModel(
-                          color: const Color.fromARGB(0, 170, 158, 52),
-                          elevation: 30.0,
-                          shadowColor: const Color.fromARGB(200, 170, 158, 52),
-                          child: Image.asset(digitalArt.imagePaths[index])),
-                    ),
-                  ),
-                ],
-              );
-            }),
+        child: GridView.count(
+            crossAxisCount: widget.gridCount,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
+            // childAspectRatio: 10.5,
+            padding: const EdgeInsets.all(8.0),
+            children: widget.digitalArt.imagePaths.map((String path) {
+              return Image.asset(path);
+            }).toList()),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(144, 170, 158, 52),

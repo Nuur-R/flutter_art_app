@@ -5,19 +5,13 @@ import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter_art_app/models/hand-art-model.dart';
 import 'package:flutter_art_app/screen/detail/detail-hand-art.dart';
 
-class MainHandArt extends StatefulWidget {
-  // const MainHandArt({super.key, required this.handArtCollection});
-  static const double _itemHeight = 170;
-  static final int _itemCount = handArtCollection.length * 3;
-
-  @override
-  State<MainHandArt> createState() => _MainHandArtState();
-}
-
-class _MainHandArtState extends State<MainHandArt> {
+class MainHandArt extends StatelessWidget {
   final _scrollController = FixedExtentScrollController();
-
-  // final List<String> handArtCollection;
+  // int? da = listKulinerNusantara.length;
+  final int listSelector;
+  static const double _itemHeight = 170;
+  static final int _itemCount = handArtCollection.length;
+  MainHandArt({required this.listSelector});
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +32,12 @@ class _MainHandArtState extends State<MainHandArt> {
           },
           child: ListWheelScrollView(
             controller: _scrollController,
-            itemExtent: MainHandArt._itemHeight,
+            itemExtent: _itemHeight,
             physics: FixedExtentScrollPhysics(),
             diameterRatio: 1.5,
             perspective: 0.002,
             offAxisFraction: -1.5,
-            children: buttonList,
+            children: list[listSelector],
           ),
         ),
       ),
@@ -51,6 +45,7 @@ class _MainHandArtState extends State<MainHandArt> {
   }
 }
 
+List list = [buttonList, midButtonList, wideButtonList];
 List<Widget> buttonList = [
   for (var i = 0; i < handArtCollection.length; i++)
     PhysicalModel(
@@ -62,6 +57,34 @@ List<Widget> buttonList = [
         handArtCollection[i].buttonImage,
         width: 300,
         height: 170,
+      ),
+    ),
+];
+List<Widget> midButtonList = [
+  for (var i = 0; i < handArtCollection.length; i++)
+    PhysicalModel(
+      color: const Color.fromARGB(0, 170, 158, 52),
+      elevation: 30.0,
+      borderRadius: BorderRadius.circular(40.0),
+      shadowColor: const Color.fromARGB(144, 170, 158, 52),
+      child: Image.asset(
+        handArtCollection[i].buttonImage,
+        width: 400,
+        height: 250,
+      ),
+    ),
+];
+List<Widget> wideButtonList = [
+  for (var i = 0; i < handArtCollection.length; i++)
+    PhysicalModel(
+      color: const Color.fromARGB(0, 170, 158, 52),
+      elevation: 30.0,
+      borderRadius: BorderRadius.circular(40.0),
+      shadowColor: const Color.fromARGB(144, 170, 158, 52),
+      child: Image.asset(
+        handArtCollection[i].buttonImage,
+        width: 500,
+        height: 380,
       ),
     ),
 ];
