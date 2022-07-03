@@ -49,7 +49,7 @@ class MobileWlcomeScreen extends StatelessWidget {
             controller: _scrollController,
             itemExtent: _itemHeight,
             physics: const FixedExtentScrollPhysics(),
-            diameterRatio: 0.7,
+            diameterRatio: 1.5,
             // perspective: 0.002,
             children: hello,
           ),
@@ -74,12 +74,29 @@ class MediumWelcomeScreen extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Expanded(
-              child: Center(
-                child: Container(
-                  color: Colors.black,
-                  child: Image.asset(
-                    'images/welcome/mid.png',
-                    fit: BoxFit.fill,
+              child: Container(
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/welcome/mid.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: const Center(
+                  child: Text(
+                    "When AI\ncan make Art",
+                    style: TextStyle(
+                      fontSize: 70,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 10,
+                          color: Colors.black,
+                          offset: Offset(5, 5),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -104,7 +121,7 @@ class MediumWelcomeScreen extends StatelessWidget {
                     controller: _scrollController,
                     itemExtent: _itemHeight,
                     physics: const FixedExtentScrollPhysics(),
-                    diameterRatio: 0.7,
+                    diameterRatio: 1.5,
                     // perspective: 0.002,
                     children: hello,
                   ),
@@ -133,9 +150,31 @@ class WideWelcomeScreen extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Expanded(
-              child: Image.asset(
-                'images/welcome/wide.png',
-                fit: BoxFit.fill,
+              child: Container(
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/welcome/wide.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Welcome to AI Galery\nwhen AI can make Art",
+                    style: TextStyle(
+                      fontSize: 90,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 10,
+                          color: Colors.black,
+                          offset: Offset(5, 5),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
             Expanded(
