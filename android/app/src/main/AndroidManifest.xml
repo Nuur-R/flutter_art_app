@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_art_app">
    <application
-        android:label="flutter_art_app"
+        android:label="AI Galery"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
