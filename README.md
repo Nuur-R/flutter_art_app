@@ -10,4 +10,5 @@ project ini adalah tugas akhir untuk program IDCamp2022 yang diselenggarakan ole
 https://user-images.githubusercontent.com/93628058/177050304-5dedc38d-4561-4d7b-ba71-1f09ae7987bc.mp4
 
 ### WideScreen DEMO
-Uploading 2022-07-04 00-16-12_Trim.mp4…
+https://user-images.githubusercontent.com/93628058/177050661-9b81b270-6b2a-4935-bced-96f32e98fed5.mp4
+
