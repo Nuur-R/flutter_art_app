@@ -51,7 +51,7 @@ class MobileWlcomeScreen extends StatelessWidget {
             physics: const FixedExtentScrollPhysics(),
             diameterRatio: 1.5,
             // perspective: 0.002,
-            children: hello,
+            children: helloNetwork,
           ),
         ),
       ),
@@ -78,7 +78,8 @@ class MediumWelcomeScreen extends StatelessWidget {
                 height: double.infinity,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/welcome/mid.png'),
+                    image: NetworkImage(
+                        'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/mid.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -123,7 +124,7 @@ class MediumWelcomeScreen extends StatelessWidget {
                     physics: const FixedExtentScrollPhysics(),
                     diameterRatio: 1.5,
                     // perspective: 0.002,
-                    children: hello,
+                    children: helloNetwork,
                   ),
                 ),
               ),
@@ -154,7 +155,8 @@ class WideWelcomeScreen extends StatelessWidget {
                 height: double.infinity,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/welcome/wide.png'),
+                    image: NetworkImage(
+                        'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/wide.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -199,7 +201,7 @@ class WideWelcomeScreen extends StatelessWidget {
                     physics: const FixedExtentScrollPhysics(),
                     diameterRatio: 1.5,
                     // perspective: 0.002,
-                    children: wideHello,
+                    children: wideHelloNetwork,
                   ),
                 ),
               ),
@@ -211,14 +213,109 @@ class WideWelcomeScreen extends StatelessWidget {
   }
 }
 
-List<Widget> hello = [
+// List<Widget> hello = [
+//   PhysicalModel(
+//     color: const Color.fromARGB(0, 170, 158, 52),
+//     elevation: 50.0,
+//     borderRadius: BorderRadius.circular(40.0),
+//     shadowColor: const Color.fromARGB(144, 170, 158, 52),
+//     child: Image.asset(
+//       'images/welcome/Welcome1.png',
+//       width: 500,
+//       height: 700,
+//     ),
+//   ),
+//   PhysicalModel(
+//     color: const Color.fromARGB(0, 170, 158, 52),
+//     elevation: 50.0,
+//     borderRadius: BorderRadius.circular(40.0),
+//     shadowColor: const Color.fromARGB(144, 170, 158, 52),
+//     child: Image.asset(
+//       'images/welcome/Welcome2.png',
+//       width: 500,
+//       height: 700,
+//     ),
+//   ),
+//   PhysicalModel(
+//     color: const Color.fromARGB(0, 170, 158, 52),
+//     elevation: 50.0,
+//     borderRadius: BorderRadius.circular(40.0),
+//     shadowColor: const Color.fromARGB(144, 170, 158, 52),
+//     child: Image.asset(
+//       'images/welcome/Welcome3.png',
+//       width: 500,
+//       height: 700,
+//     ),
+//   ),
+//   PhysicalModel(
+//     color: const Color.fromARGB(0, 170, 158, 52),
+//     elevation: 50.0,
+//     borderRadius: BorderRadius.circular(40.0),
+//     shadowColor: const Color.fromARGB(144, 170, 158, 52),
+//     child: Image.asset(
+//       'images/welcome/Welcome4.png',
+//       width: 500,
+//       height: 700,
+//     ),
+//   ),
+// ];
+
+// List<Widget> wideHello = [
+//   PhysicalModel(
+//     color: const Color.fromARGB(0, 170, 158, 52),
+//     elevation: 50.0,
+//     borderRadius: BorderRadius.circular(40.0),
+//     shadowColor: const Color.fromARGB(144, 170, 158, 52),
+//     child: Image.asset(
+//       'images/welcome/Welcome1 Wide.png',
+//       width: 500,
+//       height: 700,
+//     ),
+//   ),
+//   PhysicalModel(
+//     color: const Color.fromARGB(0, 170, 158, 52),
+//     elevation: 50.0,
+//     borderRadius: BorderRadius.circular(40.0),
+//     shadowColor: const Color.fromARGB(144, 170, 158, 52),
+//     child: Image.asset(
+//       'images/welcome/Welcome2 Wide.png',
+//       width: 500,
+//       height: 700,
+//     ),
+//   ),
+//   PhysicalModel(
+//     color: const Color.fromARGB(0, 170, 158, 52),
+//     elevation: 50.0,
+//     borderRadius: BorderRadius.circular(40.0),
+//     shadowColor: const Color.fromARGB(144, 170, 158, 52),
+//     child: Image.asset(
+//       'images/welcome/Welcome3 Wide.png',
+//       width: 500,
+//       height: 700,
+//     ),
+//   ),
+//   PhysicalModel(
+//     color: const Color.fromARGB(0, 170, 158, 52),
+//     elevation: 50.0,
+//     borderRadius: BorderRadius.circular(40.0),
+//     shadowColor: const Color.fromARGB(144, 170, 158, 52),
+//     child: Image.asset(
+//       'images/welcome/Welcome4 Wide.png',
+//       width: 500,
+//       height: 700,
+//     ),
+//   ),
+// ];
+
+List<Widget> helloNetwork = [
   PhysicalModel(
     color: const Color.fromARGB(0, 170, 158, 52),
     elevation: 50.0,
     borderRadius: BorderRadius.circular(40.0),
     shadowColor: const Color.fromARGB(144, 170, 158, 52),
-    child: Image.asset(
-      'images/welcome/Welcome1.png',
+    child: Image.network(
+      'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/Welcome1.png',
+      scale: 1,
       width: 500,
       height: 700,
     ),
@@ -228,8 +325,9 @@ List<Widget> hello = [
     elevation: 50.0,
     borderRadius: BorderRadius.circular(40.0),
     shadowColor: const Color.fromARGB(144, 170, 158, 52),
-    child: Image.asset(
-      'images/welcome/Welcome2.png',
+    child: Image.network(
+      'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/Welcome2.png',
+      scale: 1,
       width: 500,
       height: 700,
     ),
@@ -239,8 +337,8 @@ List<Widget> hello = [
     elevation: 50.0,
     borderRadius: BorderRadius.circular(40.0),
     shadowColor: const Color.fromARGB(144, 170, 158, 52),
-    child: Image.asset(
-      'images/welcome/Welcome3.png',
+    child: Image.network(
+      'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/Welcome3.png',
       width: 500,
       height: 700,
     ),
@@ -250,22 +348,23 @@ List<Widget> hello = [
     elevation: 50.0,
     borderRadius: BorderRadius.circular(40.0),
     shadowColor: const Color.fromARGB(144, 170, 158, 52),
-    child: Image.asset(
-      'images/welcome/Welcome4.png',
+    child: Image.network(
+      'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/Welcome4.png',
       width: 500,
       height: 700,
     ),
   ),
 ];
 
-List<Widget> wideHello = [
+List<Widget> wideHelloNetwork = [
   PhysicalModel(
     color: const Color.fromARGB(0, 170, 158, 52),
     elevation: 50.0,
     borderRadius: BorderRadius.circular(40.0),
     shadowColor: const Color.fromARGB(144, 170, 158, 52),
-    child: Image.asset(
-      'images/welcome/Welcome1 Wide.png',
+    child: Image.network(
+      'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/Welcome1%20Wide.png',
+      scale: 1,
       width: 500,
       height: 700,
     ),
@@ -275,8 +374,9 @@ List<Widget> wideHello = [
     elevation: 50.0,
     borderRadius: BorderRadius.circular(40.0),
     shadowColor: const Color.fromARGB(144, 170, 158, 52),
-    child: Image.asset(
-      'images/welcome/Welcome2 Wide.png',
+    child: Image.network(
+      'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/Welcome2%20Wide.png',
+      scale: 1,
       width: 500,
       height: 700,
     ),
@@ -286,8 +386,8 @@ List<Widget> wideHello = [
     elevation: 50.0,
     borderRadius: BorderRadius.circular(40.0),
     shadowColor: const Color.fromARGB(144, 170, 158, 52),
-    child: Image.asset(
-      'images/welcome/Welcome3 Wide.png',
+    child: Image.network(
+      'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/Welcome3%20Wide.png',
       width: 500,
       height: 700,
     ),
@@ -297,8 +397,8 @@ List<Widget> wideHello = [
     elevation: 50.0,
     borderRadius: BorderRadius.circular(40.0),
     shadowColor: const Color.fromARGB(144, 170, 158, 52),
-    child: Image.asset(
-      'images/welcome/Welcome4 Wide.png',
+    child: Image.network(
+      'https://raw.githubusercontent.com/Nuur-R/flutter_art_app/master/images/welcome/Welcome4%20Wide.png',
       width: 500,
       height: 700,
     ),
