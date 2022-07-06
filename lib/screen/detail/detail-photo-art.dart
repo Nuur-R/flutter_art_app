@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_art_app/models/photo-art-model.dart';
+// import 'package:flutter_art_app/models/photo-art-model.dart';
+import 'package:flutter_art_app/models/photo-art-model-network.dart';
 import 'package:flutter_art_app/screen/main-screen.dart';
 
 class DetailMobile extends StatelessWidget {
@@ -56,7 +57,7 @@ class _GridDetailState extends State<GridDetail> {
             crossAxisSpacing: 20,
             padding: const EdgeInsets.all(8.0),
             children: widget.photoArt.imagePaths.map((String path) {
-              return Image.asset(path);
+              return Image.network(path);
             }).toList()),
       ),
       floatingActionButton: FloatingActionButton(

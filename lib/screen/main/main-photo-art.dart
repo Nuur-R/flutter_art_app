@@ -2,7 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
-import 'package:flutter_art_app/models/photo-art-model.dart';
+// import 'package:flutter_art_app/models/photo-art-model.dart';
+import 'package:flutter_art_app/models/photo-art-model-network.dart';
 import 'package:flutter_art_app/screen/detail/detail-photo-art.dart';
 
 class MainPhotoArt extends StatelessWidget {
@@ -59,7 +60,7 @@ List<Widget> buttonList = [
       elevation: 30.0,
       borderRadius: BorderRadius.circular(40.0),
       shadowColor: const Color.fromARGB(144, 170, 158, 52),
-      child: Image.asset(
+      child: Image.network(
         photoArtCollection[i].buttonImage,
         width: 300,
         height: 170,
@@ -73,7 +74,7 @@ List<Widget> midButtonList = [
       elevation: 30.0,
       borderRadius: BorderRadius.circular(40.0),
       shadowColor: const Color.fromARGB(144, 170, 158, 52),
-      child: Image.asset(
+      child: Image.network(
         photoArtCollection[i].buttonImage,
         width: 400,
         height: 250,
@@ -87,7 +88,7 @@ List<Widget> wideButtonList = [
       elevation: 30.0,
       borderRadius: BorderRadius.circular(40.0),
       shadowColor: const Color.fromARGB(144, 170, 158, 52),
-      child: Image.asset(
+      child: Image.network(
         photoArtCollection[i].buttonImage,
         width: 500,
         height: 380,
